@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, "index"])->name('index');
-Route::get('/login', [AuthController::class, "login"])->name('login');
+
+Route::get('/login', [LoginController::class, "index"])->name('login');
+Route::post('/login', [LoginController::class, "login"]);
