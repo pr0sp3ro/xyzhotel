@@ -11,7 +11,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login() {
-        # code...
+    public function login(Request $request) {
+        dd($request->all());
     }
 }
