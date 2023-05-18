@@ -23,7 +23,5 @@ class LoginController extends Controller
         } else {
             return back()->withErrors(['email' => 'Invalid credentials']);
         }
-
-        return redirect()->route('index');
     }
 }
