@@ -16,7 +16,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Zaloguj sie do panelu</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Zaloguj się do panelu</h1>
                                 </div>
                                 <form class="user" method="post" action="{{ route('login') }}" >
                                     @csrf

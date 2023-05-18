@@ -2,14 +2,14 @@
 
 # AK-Hotel
 
-## Installing dependecies
+## Instalacja zależności
 
 ```
 composer install
 npm install
 ```
 
-## Screenshots
+## Zrzuty ekranu
 
 ...
 
