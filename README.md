@@ -1,6 +1,6 @@
 <p align="center"><img src="/public/img/logo.png" width="300"></p>
 
-# AKHotel
+# AK-Hotel
 
 ## Installing dependecies
 
