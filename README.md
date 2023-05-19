@@ -1,4 +1,4 @@
-<p align="center"><img src="/public/img/logo.png" width="300"></p>
+<p align="center"><img src="/src/public/img/logo.png" width="300"></p>
 
 # AK-Hotel - Portfolio Hotel Project
 
