@@ -15,13 +15,18 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('place')->nullable();
-            $table->string('checkin_date')->nullable();
-            $table->string('checkout_date')->nullable();
-            $table->string('room_type')->nullable();
-            $table->string('group_adults')->nullable();
-            $table->string('group_children')->nullable();
-            $table->string('travel_purpose')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('room_id')->constrained()->onDelete('cascade');
+            $table->foreignId('payment_id')->constrained()->onDelete('cascade');
+            $table->string('place');
+            $table->date('checkin_date');
+            $table->date('checkout_date');
+            $table->timestamp('booking_date');
+            $table->integer('total_guests');
+            $table->integer('num_adults');
+            $table->integer('num_children');
+            $table->string('travel_purpose');
+            $table->string('status');
             $table->timestamps();
         });
     }
