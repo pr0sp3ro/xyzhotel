@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_verified')->default(false);
-            $table->string('user_type');
+            $table->string('user_type')->default("guest");
             $table->timestamps();
         });
     }
