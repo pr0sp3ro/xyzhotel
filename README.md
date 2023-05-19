@@ -44,8 +44,7 @@ git clone https://github.com/pr0sp3ro/AK-Hotel.git
 
 2. Navigate to the project directory:
 ```bash
-cd AK-Hotel
-cd src
+cd AK-Hotel/src
 ```
 
 3. Install PHP dependencies:
