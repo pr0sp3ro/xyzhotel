@@ -9,18 +9,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth', 'gate:guest'])->group(function () {
+Route::middleware(['guest'])->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+});
+
+Route::middleware(['gate:guest'])->group(function () {
+    // wszystkie rezerwacje
+    Route::get('/bookings', [BookingController::class, 'index']);
+    // wyszukanie rezerwacji
+    Route::get('/bookings/{booking}', [BookingController::class, 'show']);
+
     // dodanie rezerwacji
     // Route::get('/bookings/create', [BookingController::class, 'createNewBooking']);
     Route::post('/bookings', [BookingController::class, 'store']);
 
     // usuniecie rezerwacji
     Route::delete('/bookings/{booking}', [BookingController::class, 'deleteBooking']);
-
-    // wszystkie rezerwacje
-    Route::get('/bookings', [BookingController::class, 'index']);
-    // wyszukanie rezerwacji
-    Route::get('/bookings/{booking}', [BookingController::class, 'show']);
 
     // edycja istniejacej rezerwacji
     // Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit']);
