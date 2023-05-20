@@ -22,7 +22,7 @@ class BookingFactory extends Factory
         return [
             'user_id' => 1,
             'room_id' => 1,
-            'payment_id' => 1,
+            // 'payment_id' => 1,
             'place' => $this->faker->city,
             'checkin_date' => $this->faker->date(),
             'checkout_date' => $this->faker->date(),
