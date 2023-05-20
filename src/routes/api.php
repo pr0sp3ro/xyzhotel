@@ -49,3 +49,11 @@ Route::middleware(['auth', 'gate:admin,employee'])->group(function () {
     Route::get('/payments/confirmation', [PaymentController::class, 'generateConfirmation']);
     Route::post('/payments/validate', [PaymentController::class, 'validateData']);
 });
+
+Route::middleware(['auth', 'gate:admin'])->group(function () {
+    Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
+    Route::post('/employees', [EmployeeController::class, 'create']);
+    Route::delete('/employees/{employee}', [EmployeeController::class, 'delete']);
+    Route::put('/employees/{employee}', [EmployeeController::class, 'update']);
+    Route::put('/employees/{employee}/permissions', [EmployeeController::class, 'changePermissions']);
+});
