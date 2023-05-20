@@ -7,36 +7,10 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function index()
-    {
-        $bookings = Booking::all();
-        return response()->json($bookings);
-    }
-
-    public function create()
-    {
-        return response()->json([
-            'message' => 'Provide booking creation form or relevant information',
-        ]);
-    }
-
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
-            'place' => 'required|string',
-            'checkin_date' => 'required|date',
-            'checkout_date' => 'required|date',
-            'booking_date' => 'required|date',
-            'total_guests' => 'required|integer',
-            'num_adults' => 'required|integer',
-            'num_children' => 'required|integer',
-            'travel_purpose' => 'required|string',
-            'status' => 'required|string',
-        ]);
-
-        $booking = Booking::create($validatedData);
+        $bookingData = $request->all();
+        $booking = Booking::create($bookingData);
 
         return response()->json([
             'message' => 'Booking created successfully',
@@ -44,27 +18,54 @@ class BookingController extends Controller
         ]);
     }
 
-    public function show(Booking $booking)
+    public function deleteBooking(Booking $booking)
     {
-        return response()->json($booking);
+        $booking->delete();
+
+        return response()->json([
+            'message' => 'Booking deleted successfully',
+        ]);
     }
 
-    public function edit(Booking $booking)
+    public function index()
     {
+        $bookings = Booking::all();
+
+        return response()->json([
+            'bookings' => $bookings,
+        ]);
+    }
+
+    public function show(Booking $booking)
+    {
+        return response()->json([
+            'booking' => $booking,
+        ]);
     }
 
     public function update(Request $request, Booking $booking)
     {
+        $bookingData = $request->all();
+        $booking->update($bookingData);
+
+        return response()->json([
+            'message' => 'Booking updated successfully',
+            'booking' => $booking,
+        ]);
     }
 
-    public function destroy(Booking $booking)
+    public function showHistory()
     {
-        // Delete the specified booking
-        $booking->delete();
-
-        // Return a JSON response indicating success
         return response()->json([
-            'message' => 'Booking deleted successfully',
+            'message' => 'Booking history retrieved',
+            'history' => [], // Add the actual booking history data here
+        ]);
+    }
+
+    public function confirmIdentity()
+    {
+        return response()->json([
+            'message' => 'Identity confirmed',
         ]);
     }
 }
