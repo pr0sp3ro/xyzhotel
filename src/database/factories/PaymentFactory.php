@@ -18,11 +18,13 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            // 'booking_id' => 1,
-            'is_confirmed' => $this->faker->boolean,
-            'payment_date' => Carbon::now(),
-            'amount' => $this->faker->randomFloat(2, 10, 500),
-            'currency' => $this->faker->currencyCode,
+            'is_available' => $this->faker->boolean,
+            'price' => $this->faker->randomFloat(2, 50, 200),
+            'room_number' => $this->faker->unique()->numberBetween(100, 999),
+            'room_type' => $this->faker->randomElement(['Single', 'Double', 'Suite']),
+            'is_cleaned' => $this->faker->boolean,
+            'description' => $this->faker->optional()->paragraph,
+            'max_capacity' => $this->faker->randomNumber(2),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
