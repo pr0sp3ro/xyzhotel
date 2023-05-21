@@ -4,7 +4,17 @@
 
 <screenshot>
 
-AK-Hotel is a portfolio hotel management project developed in Laravel framework, showcasing a hotel website. It utilizes Bootstrap 5, DataTables, and Laravel Gates to provide an interactive and user-friendly experience.
+AK-Hotel is a portfolio hotel management project developed in the Laravel framework. It serves as a showcase website for a hotel, providing various features and functionalities. This README aims to provide an extensive guide on the project, including its architecture, installation, and usage.
+
+## Features:
+
+API: The AK-Hotel project offers a comprehensive API that allows developers to interact with various aspects of the hotel management system. The API provides endpoints for managing bookings, rooms, guests, and other essential hotel operations. Developers can integrate this API into their own applications or extend its functionality to suit their specific needs.
+
+Bootstrap 5: The project utilizes Bootstrap 5, a popular CSS framework, to ensure a responsive and visually appealing design across different devices and screen sizes. This enables the website to provide an optimal user experience on desktops, tablets, and mobile devices.
+
+DataTables: AK-Hotel integrates DataTables, a powerful JavaScript library, to enhance the data presentation and manipulation capabilities of tables in the project. DataTables provides features such as pagination, sorting, filtering, and searching, making it easier for users to navigate and interact with hotel-related data.
+
+Laravel Gates: The project leverages Laravel Gates, a built-in authorization system, to manage user permissions and access control. With Laravel Gates, you can define and enforce access policies based on user roles and permissions, ensuring that only authorized users can perform specific actions within the system.
 
 ## Screenshots
 
