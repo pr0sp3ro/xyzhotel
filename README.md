@@ -8,18 +8,20 @@ AK-Hotel is a portfolio hotel management project developed in Laravel framework,
 
 ## Screenshots
 
-<homepage>
+homepage pic
 Homepage showcasing the hotel's accommodations.
 
-<booking>
+bookings pic
 Booking page allowing users to select dates and make reservations.
 
-<rooms>
+rooms pic
 Room listings with detailed information and availability.
 
-<guests>
+guests pic
+...
 
-<admin panel>
+admin panel pic
+...
 
 ## Dependencies 
 
