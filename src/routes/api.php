@@ -9,14 +9,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['guest'])->group(function () {
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login', [AuthController::class, 'login']);
-    Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
-    Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
-});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
+Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
 
-Route::middleware(['gate:guest'])->group(function () {
+Route::middleware('user_type:guest')->group(function () {
     // wszystkie rezerwacje
     Route::get('/bookings', [BookingController::class, 'index']);
     // wyszukanie rezerwacji
@@ -43,14 +41,14 @@ Route::middleware(['gate:guest'])->group(function () {
     Route::get('/availability', [RoomController::class, 'checkAvailability']);
 });
 
-Route::middleware(['auth', 'gate:admin,employee'])->group(function () {
+Route::middleware('user_type:employee,admin')->group(function () {
     Route::get('/payments', [PaymentController::class, 'index']);
     Route::post('/payments', [PaymentController::class, 'processPayment']);
     Route::get('/payments/confirmation', [PaymentController::class, 'generateConfirmation']);
     Route::post('/payments/validate', [PaymentController::class, 'validateData']);
 });
 
-Route::middleware(['auth', 'gate:admin'])->group(function () {
+Route::middleware('user_type:admin')->group(function () {
     Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
     Route::post('/employees', [EmployeeController::class, 'create']);
     Route::delete('/employees/{employee}', [EmployeeController::class, 'delete']);
