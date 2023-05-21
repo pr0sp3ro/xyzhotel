@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('booking_id')->constrained()->onDelete('cascade');
             $table->boolean('is_confirmed');
             $table->timestamp('payment_date');
             $table->decimal('amount', 8, 2);

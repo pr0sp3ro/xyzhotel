@@ -18,7 +18,6 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-                'booking_id' => 1,
                 'is_confirmed' => $this->faker->boolean,
                 'payment_date' => $this->faker->dateTime,
                 'amount' => $this->faker->randomFloat(2, 0, 999999.99),
