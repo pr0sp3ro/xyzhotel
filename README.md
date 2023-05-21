@@ -1,5 +1,3 @@
-<p align="center"><img src="/src/public/img/logo.png" width="300"></p>
-
 # XYZHotel - Portfolio Hotel Project
 
 <screenshot>
