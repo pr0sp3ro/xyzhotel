@@ -12,32 +12,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
-Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+
+Route::middleware('user_type:employee')->group(function () {
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+});
 
 Route::middleware('user_type:guest')->group(function () {
-    // wszystkie rezerwacje
     Route::get('/bookings', [BookingController::class, 'index']);
-    // wyszukanie rezerwacji
     Route::get('/bookings/{booking}', [BookingController::class, 'show']);
 
-    // dodanie rezerwacji
     // Route::get('/bookings/create', [BookingController::class, 'createNewBooking']);
     Route::post('/bookings', [BookingController::class, 'store']);
 
-    // usuniecie rezerwacji
     Route::delete('/bookings/{booking}', [BookingController::class, 'deleteBooking']);
 
-    // edycja istniejacej rezerwacji
     // Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit']);
     Route::put('/bookings/{booking}', [BookingController::class, 'update']);
 
-    // wyswietlenie historii rezerwacji
     Route::get('/bookings/history', [BookingController::class, 'showHistory']);
-
-    // potwierdzenie tozsamosci
     Route::get('/confirm-identity', [BookingController::class, 'confirmIdentity']);
 
-    // sprawdzenie dostepnosci pokoi
     Route::get('/availability', [RoomController::class, 'checkAvailability']);
 });
 
@@ -54,4 +48,9 @@ Route::middleware('user_type:admin')->group(function () {
     Route::delete('/employees/{employee}', [EmployeeController::class, 'delete']);
     Route::put('/employees/{employee}', [EmployeeController::class, 'update']);
     Route::put('/employees/{employee}/permissions', [EmployeeController::class, 'changePermissions']);
+});
+
+Route::middleware('user_type:employee')->group(function () {
+    Route::get('/my-profile', [PaymentController::class, 'index']);
+    Route::post('/my-profile/change-password', [PaymentController::class, 'changePassword']);
 });
