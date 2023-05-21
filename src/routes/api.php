@@ -15,6 +15,8 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot']);
 
 Route::middleware('user_type:employee')->group(function () {
     Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
+    Route::get('/my-profile', [PaymentController::class, 'index']);
+    Route::post('/my-profile/change-password', [PaymentController::class, 'changePassword']);
 });
 
 Route::middleware('user_type:guest')->group(function () {
@@ -48,9 +50,4 @@ Route::middleware('user_type:admin')->group(function () {
     Route::delete('/employees/{employee}', [EmployeeController::class, 'delete']);
     Route::put('/employees/{employee}', [EmployeeController::class, 'update']);
     Route::put('/employees/{employee}/permissions', [EmployeeController::class, 'changePermissions']);
-});
-
-Route::middleware('user_type:employee')->group(function () {
-    Route::get('/my-profile', [PaymentController::class, 'index']);
-    Route::post('/my-profile/change-password', [PaymentController::class, 'changePassword']);
 });
